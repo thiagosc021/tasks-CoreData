@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		78230620282EACE200271289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823061F282EACE200271289 /* AppDelegate.swift */; };
 		78230622282EACE200271289 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230621282EACE200271289 /* SceneDelegate.swift */; };
-		78230624282EACE300271289 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230623282EACE200271289 /* ViewController.swift */; };
+		78230624282EACE300271289 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230623282EACE200271289 /* TaskListViewController.swift */; };
 		78230627282EACE300271289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78230625282EACE300271289 /* Main.storyboard */; };
 		7823062A282EACE300271289 /* Tasks_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78230628282EACE300271289 /* Tasks_CoreData.xcdatamodeld */; };
 		7823062C282EACE500271289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7823062B282EACE500271289 /* Assets.xcassets */; };
 		7823062F282EACE500271289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7823062D282EACE500271289 /* LaunchScreen.storyboard */; };
+		7823063D282EB17400271289 /* TaskList+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823063C282EB17400271289 /* TaskList+convenience.swift */; };
+		7823063F282EB18C00271289 /* Task+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823063E282EB18C00271289 /* Task+convenience.swift */; };
+		78230641282EB20E00271289 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230640282EB20E00271289 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7823061C282EACE200271289 /* Tasks-CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tasks-CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7823061F282EACE200271289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78230621282EACE200271289 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		78230623282EACE200271289 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		78230623282EACE200271289 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		78230626282EACE300271289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78230629282EACE300271289 /* Tasks_CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks_CoreData.xcdatamodel; sourceTree = "<group>"; };
 		7823062B282EACE500271289 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7823062E282EACE500271289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78230630282EACE500271289 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7823063C282EB17400271289 /* TaskList+convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskList+convenience.swift"; sourceTree = "<group>"; };
+		7823063E282EB18C00271289 /* Task+convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+convenience.swift"; sourceTree = "<group>"; };
+		78230640282EB20E00271289 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +64,9 @@
 		7823061E282EACE200271289 /* Tasks-CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				78230638282EAD3700271289 /* model */,
+				7823063B282EAEDF00271289 /* modelControllers */,
+				78230638282EAD3700271289 /* models */,
+				78230639282EAEBA00271289 /* viewControllers */,
 				78230637282EAD1C00271289 /* views */,
 				78230636282EACFC00271289 /* resources */,
 			);
@@ -79,26 +87,27 @@
 		78230637282EAD1C00271289 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				78230639282EAEBA00271289 /* viewControllers */,
 				78230625282EACE300271289 /* Main.storyboard */,
 				7823062D282EACE500271289 /* LaunchScreen.storyboard */,
 			);
 			path = views;
 			sourceTree = "<group>";
 		};
-		78230638282EAD3700271289 /* model */ = {
+		78230638282EAD3700271289 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7823063B282EAEDF00271289 /* modelControllers */,
 				78230628282EACE300271289 /* Tasks_CoreData.xcdatamodeld */,
+				7823063C282EB17400271289 /* TaskList+convenience.swift */,
+				7823063E282EB18C00271289 /* Task+convenience.swift */,
+				78230640282EB20E00271289 /* CoreDataStack.swift */,
 			);
-			path = model;
+			path = models;
 			sourceTree = "<group>";
 		};
 		78230639282EAEBA00271289 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				78230623282EACE200271289 /* ViewController.swift */,
+				78230623282EACE200271289 /* TaskListViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -181,7 +190,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78230624282EACE300271289 /* ViewController.swift in Sources */,
+				78230641282EB20E00271289 /* CoreDataStack.swift in Sources */,
+				7823063F282EB18C00271289 /* Task+convenience.swift in Sources */,
+				78230624282EACE300271289 /* TaskListViewController.swift in Sources */,
+				7823063D282EB17400271289 /* TaskList+convenience.swift in Sources */,
 				78230620282EACE200271289 /* AppDelegate.swift in Sources */,
 				78230622282EACE200271289 /* SceneDelegate.swift in Sources */,
 				7823062A282EACE300271289 /* Tasks_CoreData.xcdatamodeld in Sources */,
