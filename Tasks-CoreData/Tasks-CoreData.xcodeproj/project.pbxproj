@@ -17,6 +17,16 @@
 		7823063D282EB17400271289 /* TaskList+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823063C282EB17400271289 /* TaskList+convenience.swift */; };
 		7823063F282EB18C00271289 /* Task+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823063E282EB18C00271289 /* Task+convenience.swift */; };
 		78230641282EB20E00271289 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230640282EB20E00271289 /* CoreDataStack.swift */; };
+		78230643282EB50D00271289 /* TaskListModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230642282EB50D00271289 /* TaskListModelController.swift */; };
+		78230645282EB7B800271289 /* TaskModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230644282EB7B800271289 /* TaskModelController.swift */; };
+		782306482831AC4700271289 /* TaksListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782306462831AC4700271289 /* TaksListTableViewCell.swift */; };
+		782306492831AC4700271289 /* TaksListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782306472831AC4700271289 /* TaksListTableViewCell.xib */; };
+		7823064D2831C29B00271289 /* ColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823064C2831C29B00271289 /* ColorSelectorView.swift */; };
+		782306502831C4CD00271289 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823064F2831C4CD00271289 /* UIViewExtension.swift */; };
+		7823065228333E1200271289 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823065128333E1200271289 /* StringConstants.swift */; };
+		7823065428347DB300271289 /* IconSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823065328347DB300271289 /* IconSelectorView.swift */; };
+		782306562834831F00271289 /* ListDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782306552834831E00271289 /* ListDetailsViewController.swift */; };
+		782306582835CADB00271289 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782306572835CADB00271289 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +42,16 @@
 		7823063C282EB17400271289 /* TaskList+convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskList+convenience.swift"; sourceTree = "<group>"; };
 		7823063E282EB18C00271289 /* Task+convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+convenience.swift"; sourceTree = "<group>"; };
 		78230640282EB20E00271289 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		78230642282EB50D00271289 /* TaskListModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListModelController.swift; sourceTree = "<group>"; };
+		78230644282EB7B800271289 /* TaskModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModelController.swift; sourceTree = "<group>"; };
+		782306462831AC4700271289 /* TaksListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaksListTableViewCell.swift; sourceTree = "<group>"; };
+		782306472831AC4700271289 /* TaksListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaksListTableViewCell.xib; sourceTree = "<group>"; };
+		7823064C2831C29B00271289 /* ColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorView.swift; sourceTree = "<group>"; };
+		7823064F2831C4CD00271289 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		7823065128333E1200271289 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		7823065328347DB300271289 /* IconSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSelectorView.swift; sourceTree = "<group>"; };
+		782306552834831E00271289 /* ListDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailsViewController.swift; sourceTree = "<group>"; };
+		782306572835CADB00271289 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +84,7 @@
 		7823061E282EACE200271289 /* Tasks-CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				7823064E2831C4A400271289 /* extensions */,
 				7823063B282EAEDF00271289 /* modelControllers */,
 				78230638282EAD3700271289 /* models */,
 				78230639282EAEBA00271289 /* viewControllers */,
@@ -80,6 +101,7 @@
 				78230621282EACE200271289 /* SceneDelegate.swift */,
 				7823062B282EACE500271289 /* Assets.xcassets */,
 				78230630282EACE500271289 /* Info.plist */,
+				7823065128333E1200271289 /* StringConstants.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -87,6 +109,8 @@
 		78230637282EAD1C00271289 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				7823064B2831C27800271289 /* cutomViews */,
+				7823064A2831B10900271289 /* customCells */,
 				78230625282EACE300271289 /* Main.storyboard */,
 				7823062D282EACE500271289 /* LaunchScreen.storyboard */,
 			);
@@ -108,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				78230623282EACE200271289 /* TaskListViewController.swift */,
+				782306552834831E00271289 /* ListDetailsViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -115,8 +140,37 @@
 		7823063B282EAEDF00271289 /* modelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				78230642282EB50D00271289 /* TaskListModelController.swift */,
+				78230644282EB7B800271289 /* TaskModelController.swift */,
 			);
 			path = modelControllers;
+			sourceTree = "<group>";
+		};
+		7823064A2831B10900271289 /* customCells */ = {
+			isa = PBXGroup;
+			children = (
+				782306462831AC4700271289 /* TaksListTableViewCell.swift */,
+				782306472831AC4700271289 /* TaksListTableViewCell.xib */,
+			);
+			path = customCells;
+			sourceTree = "<group>";
+		};
+		7823064B2831C27800271289 /* cutomViews */ = {
+			isa = PBXGroup;
+			children = (
+				7823064C2831C29B00271289 /* ColorSelectorView.swift */,
+				7823065328347DB300271289 /* IconSelectorView.swift */,
+			);
+			path = cutomViews;
+			sourceTree = "<group>";
+		};
+		7823064E2831C4A400271289 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7823064F2831C4CD00271289 /* UIViewExtension.swift */,
+				782306572835CADB00271289 /* UIColorExtension.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				782306492831AC4700271289 /* TaksListTableViewCell.xib in Resources */,
 				7823062F282EACE500271289 /* LaunchScreen.storyboard in Resources */,
 				7823062C282EACE500271289 /* Assets.xcassets in Resources */,
 				78230627282EACE300271289 /* Main.storyboard in Resources */,
@@ -190,12 +245,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7823065428347DB300271289 /* IconSelectorView.swift in Sources */,
 				78230641282EB20E00271289 /* CoreDataStack.swift in Sources */,
+				7823065228333E1200271289 /* StringConstants.swift in Sources */,
 				7823063F282EB18C00271289 /* Task+convenience.swift in Sources */,
 				78230624282EACE300271289 /* TaskListViewController.swift in Sources */,
+				7823064D2831C29B00271289 /* ColorSelectorView.swift in Sources */,
 				7823063D282EB17400271289 /* TaskList+convenience.swift in Sources */,
+				78230643282EB50D00271289 /* TaskListModelController.swift in Sources */,
+				782306502831C4CD00271289 /* UIViewExtension.swift in Sources */,
+				782306562834831F00271289 /* ListDetailsViewController.swift in Sources */,
 				78230620282EACE200271289 /* AppDelegate.swift in Sources */,
+				782306582835CADB00271289 /* UIColorExtension.swift in Sources */,
+				782306482831AC4700271289 /* TaksListTableViewCell.swift in Sources */,
 				78230622282EACE200271289 /* SceneDelegate.swift in Sources */,
+				78230645282EB7B800271289 /* TaskModelController.swift in Sources */,
 				7823062A282EACE300271289 /* Tasks_CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

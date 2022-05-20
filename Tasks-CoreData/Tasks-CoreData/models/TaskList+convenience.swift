@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 extension TaskList {
-    convenience init(name: String, color: String?, icon: String?, context: NSManagedObjectContext = CoreDataStack.context ) {
+    @discardableResult convenience init(name: String, color: String?, icon: String?, context: NSManagedObjectContext = CoreDataStack.context ) {
         self.init(context: context)
         self.name = name
         self.color = color
