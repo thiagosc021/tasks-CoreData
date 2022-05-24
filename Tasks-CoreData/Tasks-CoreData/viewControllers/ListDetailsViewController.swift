@@ -8,8 +8,6 @@
 import UIKit
 
 class ListDetailsViewController: UIViewController {
-
-    
     @IBOutlet weak private var doneButton: UIButton!
     @IBOutlet weak private var iconView: UIImageView!
     @IBOutlet weak private var listNameTextView: UITextField!
@@ -28,10 +26,36 @@ class ListDetailsViewController: UIViewController {
         configureUI()
     }
     
-    private func configureUI() {
+    @IBAction func doneButtonTapped() {
+        let name = listNameTextView.text ?? ""
+        
+        guard let model = model else {
+            modelController.create(name: name, color: self.color?.name(), icon: self.icon)
+            dismiss(animated: true)
+            completion?()
+            return
+        }
+        
+        modelController.update(taskList: model, with: name, color: self.color?.name(), icon: self.icon)
+        dismiss(animated: true)
+        completion?()
+    }
+    
+    @IBAction func cancelTapped() {
+        dismiss(animated: true)
+    }
+  
+    
+    @IBAction func textFieldValueDidChange(_ sender: UITextField) {
+        doneButton.isEnabled = (sender.text?.count ?? 0) > 0
+    }
+}
+
+private extension ListDetailsViewController {
+    func configureUI() {
         doneButton.isEnabled = false
         headerContainerView.layer.cornerRadius = 12.0
-        colorSelectorView.layer.cornerRadius = 12.0        
+        colorSelectorView.layer.cornerRadius = 12.0
         iconView.clipsToBounds = true
         iconView.layer.cornerRadius = iconView.frame.height / 2
         colorSelectorView.selectColor = { [weak self] color in
@@ -59,7 +83,7 @@ class ListDetailsViewController: UIViewController {
         configureUIForUpdate()
     }
     
-    private func configureUIForUpdate() {
+    func configureUIForUpdate() {
         guard let model = model else {
             return
         }
@@ -74,29 +98,5 @@ class ListDetailsViewController: UIViewController {
         self.listNameTextView.text = model.name
         self.color = color
         doneButton.isEnabled = true
-    }
-    
-    @IBAction func doneButtonTapped() {
-        let name = listNameTextView.text ?? ""
-        
-        guard let model = model else {
-            modelController.create(name: name, color: self.color?.name(), icon: self.icon)
-            dismiss(animated: true)
-            completion?()
-            return
-        }
-        
-        modelController.update(taskList: model, with: name, color: self.color?.name(), icon: self.icon)
-        dismiss(animated: true)
-        completion?()
-    }
-    
-    @IBAction func cancelTapped() {
-        dismiss(animated: true)
-    }
-  
-    
-    @IBAction func textFieldValueDidChange(_ sender: UITextField) {
-        doneButton.isEnabled = (sender.text?.count ?? 0) > 0
     }
 }

@@ -9,6 +9,6 @@ import Foundation
 
 class StringConstants {
     static let colorSelectorButtonImageNameNormal = "circle.fill"
-    static let colorSelectorButtonImageNameSelected = "record.circle"
+    static let colorSelectorButtonImageNameSelected = "circle.circle.fill"
     static let listInfoViewControllerID = "ListInfoViewController"
 }

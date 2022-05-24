@@ -7,15 +7,35 @@
 
 import Foundation
 
+enum TaskStatus {
+    case completed
+    case incompleted
+    
+    func description() -> String {
+        switch self {
+            case .completed:
+               return "Completed"
+            case .incompleted:
+               return "Incompleted"
+        }
+    }
+}
+
 class TaskModelController {
     
-    var completedTasks: [Task]?
-    var incompletedTasks: [Task]?
+    static var shared = TaskModelController()
+    var taskStatus = [TaskStatus.completed, TaskStatus.incompleted]
+    lazy var tasks: [[Task]] = {
+        var completedTasks: [Task] = []
+        var incompletedTasks: [Task] = []
+        return [completedTasks,incompletedTasks]
+    }()
     
+    private init(){}
     
-    func create(title: String, notes: String?, dueDate: Date, taskList: TaskList) {
-        let newTask = Task(title: title, dueDate: dueDate, list: taskList, notes: notes)
-        incompletedTasks?.append(newTask)
+    func create(title: String, notes: String?, dueDate: Date, sendNotification: Bool, taskList: TaskList) {
+        let newTask = Task(title: title, dueDate: dueDate, list: taskList, notes: notes, sendNotification: sendNotification)
+        tasks[1].append(newTask)
         CoreDataStack.saveContext()
     }
     
@@ -27,18 +47,16 @@ class TaskModelController {
         CoreDataStack.saveContext()
     }
     
-    func fetch(taskList: TaskList) {
-        self.completedTasks = []
-        self.completedTasks = []
+    func fetch(taskList: TaskList) {      
         taskList.tasks?.forEach({ task in
             guard let task = task as? Task else {
                 return
             }
             
             if task.isCompleted() {
-                self.completedTasks?.append(task)
+                self.tasks[0].append(task)
             } else {
-                self.incompletedTasks?.append(task)
+                self.tasks[1].append(task)
             }
         })
     }

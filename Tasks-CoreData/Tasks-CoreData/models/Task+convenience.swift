@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 extension Task {
-    @discardableResult convenience init(title: String, dueDate: Date, list: TaskList, notes: String?, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(title: String, dueDate: Date, list: TaskList, notes: String?, sendNotification: Bool, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.id = UUID()
         self.title = title
@@ -17,6 +17,7 @@ extension Task {
         self.dueDate = dueDate
         self.completionDate = completionDate
         self.taskList = list
+        self.sendNotification = sendNotification
     }
     
     func markAsCompleted() {

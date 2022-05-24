@@ -24,6 +24,18 @@ class TaskListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         modelController.fetch()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? TaskViewController,
+              let indexPath = self.taskListsTableView.indexPathForSelectedRow else {
+            return
+        }
+        
+        let taskList = modelController.taskLists[indexPath.row]
+        
+        destinationVC.model = taskList
+        
+    }
 
 }
 
@@ -44,8 +56,12 @@ extension TaskListViewController: UITableViewDataSource {
         return modelController.taskLists.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "GoToTasks", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskListCell", for: indexPath) as? TaksListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskListCell", for: indexPath) as? TaskListTableViewCell else {
             return UITableViewCell()
         }
         

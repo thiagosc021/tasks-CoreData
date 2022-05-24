@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaksListTableViewCell: UITableViewCell {
+class TaskListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,7 +28,7 @@ class TaksListTableViewCell: UITableViewCell {
         if let colorName = taskList.color {
             let color = UIColor().named(colorName)
             iconImage.tintColor = color
-            titleLabel.textColor = color            
+            titleLabel.textColor = color
             totalTasksLabel.textColor = color
         } else {
             iconImage.tintColor = .systemBlue
