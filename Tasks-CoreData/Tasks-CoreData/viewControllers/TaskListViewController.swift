@@ -23,6 +23,7 @@ class TaskListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         modelController.fetch()
+        taskListsTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

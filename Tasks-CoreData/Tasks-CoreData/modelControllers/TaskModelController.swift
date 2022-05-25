@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TaskStatus {
+enum TaskStatus: Int {
     case completed
     case incompleted
     
@@ -47,23 +47,67 @@ class TaskModelController {
         CoreDataStack.saveContext()
     }
     
-    func fetch(taskList: TaskList) {      
+    func fetch(taskList: TaskList) {
+        self.tasks[TaskStatus.incompleted.rawValue].removeAll()
+        self.tasks[TaskStatus.completed.rawValue].removeAll()
         taskList.tasks?.forEach({ task in
             guard let task = task as? Task else {
                 return
             }
             
             if task.isCompleted() {
-                self.tasks[0].append(task)
+                self.tasks[TaskStatus.completed.rawValue].append(task)
             } else {
-                self.tasks[1].append(task)
+                self.tasks[TaskStatus.incompleted.rawValue].append(task)
             }
         })
+    }
+    
+    func hideCompletedTasks() {
+        taskStatus.remove(at: 0)
+        self.tasks[TaskStatus.completed.rawValue].removeAll()
+        self.tasks[TaskStatus.completed.rawValue].append(contentsOf: self.tasks[TaskStatus.incompleted.rawValue])
+        self.tasks[TaskStatus.incompleted.rawValue].removeAll()
+    }
+    
+    func showCompletedTasks(for taskList: TaskList) {
+        taskStatus.insert(.completed, at: 0)
+        fetch(taskList: taskList)
+        
+    }
+    
+    func complete(_ isCompleted: Bool, task: Task) {
+        task.completionDate = isCompleted ? Date() : nil
+        if task.isCompleted() {
+            remove(from: .incompleted, task: task)
+            self.tasks[TaskStatus.completed.rawValue].append(task)
+            disableNotificationAlert(task)
+        } else {
+            remove(from: .completed, task: task)
+            self.tasks[TaskStatus.incompleted.rawValue].append(task)
+        }
+        CoreDataStack.saveContext()
+    }
+    
+    func toggleNotificationAlert(_ isActive: Bool, task: Task) {
+        task.sendNotification = isActive
+        CoreDataStack.saveContext()
     }
     
     func delete(task: Task) {
         
     }
     
+    private func disableNotificationAlert(_ task: Task) {
+        task.sendNotification = false
+    }
     
+    private func remove(from status:TaskStatus, task: Task) {
+        let index = status.rawValue
+        guard let firstIndex = self.tasks[index].firstIndex(of: task) else {
+            return
+        }
+        
+        self.tasks[index].remove(at: firstIndex)
+    }
 }
