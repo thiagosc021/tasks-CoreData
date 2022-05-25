@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 enum TaskStatus: Int {
     case completed
@@ -35,8 +37,13 @@ class TaskModelController {
     
     func create(title: String, notes: String?, dueDate: Date, sendNotification: Bool, taskList: TaskList) {
         let newTask = Task(title: title, dueDate: dueDate, list: taskList, notes: notes, sendNotification: sendNotification)
-        tasks[1].append(newTask)
+        tasks[TaskStatus.incompleted.rawValue].append(newTask)
         CoreDataStack.saveContext()
+        
+        guard sendNotification else {
+            return
+        }
+        NotificationScheduler.shared.scheduleNotifications(for: newTask)
     }
     
     func update(task: Task, with title: String, notes: String?, dueDate: Date, completionDate: Date?) {
@@ -45,6 +52,11 @@ class TaskModelController {
         task.dueDate = dueDate
         task.completionDate = completionDate
         CoreDataStack.saveContext()
+        NotificationScheduler.shared.cancelNotifications(for: task)        
+        guard task.sendNotification else {
+            return
+        }
+        NotificationScheduler.shared.scheduleNotifications(for: task)
     }
     
     func fetch(taskList: TaskList) {
@@ -73,7 +85,14 @@ class TaskModelController {
     func showCompletedTasks(for taskList: TaskList) {
         taskStatus.insert(.completed, at: 0)
         fetch(taskList: taskList)
-        
+    }
+    
+    func complete(with taskList: TaskList, taskID: String) {
+        fetch(taskList: taskList)
+        guard let task = self.tasks[TaskStatus.incompleted.rawValue].first(where: { $0.id == UUID(uuidString: taskID)}) else {
+            return
+        }
+        complete(true, task: task)
     }
     
     func complete(_ isCompleted: Bool, task: Task) {
@@ -86,12 +105,17 @@ class TaskModelController {
             remove(from: .completed, task: task)
             self.tasks[TaskStatus.incompleted.rawValue].append(task)
         }
-        CoreDataStack.saveContext()
+        CoreDataStack.saveContext()        
     }
     
     func toggleNotificationAlert(_ isActive: Bool, task: Task) {
         task.sendNotification = isActive
         CoreDataStack.saveContext()
+        NotificationScheduler.shared.cancelNotifications(for: task)
+        guard isActive else {
+            return
+        }
+        NotificationScheduler.shared.scheduleNotifications(for: task)
     }
     
     func delete(task: Task) {

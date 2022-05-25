@@ -11,10 +11,10 @@ import CoreData
 class TaskListModelController {
     
     static let shared = TaskListModelController()
-    static let taskListEntityName = "TaskList"
+    
     private init() {}
     private lazy var fetchRequest: NSFetchRequest<TaskList> = {
-        let request = NSFetchRequest<TaskList>(entityName: TaskListModelController.taskListEntityName)
+        let request = NSFetchRequest<TaskList>(entityName: StringConstants.TaskList.EntityName)
         request.predicate = NSPredicate(value: true)
         return request
     }()
@@ -34,6 +34,11 @@ class TaskListModelController {
         } catch {
             print("Error fetching TaskList: \(error)")
         }
+    }
+    
+    func fetch(by id: String) -> TaskList? {
+        fetch()
+        return taskLists.first(where: { $0.id == UUID(uuidString: id)})
     }
     
     func update(taskList: TaskList, with name: String, color: String?, icon: String?) {

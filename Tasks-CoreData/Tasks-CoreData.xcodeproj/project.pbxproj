@@ -31,6 +31,7 @@
 		7823065D2838407C00271289 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823065B2838407C00271289 /* TaskTableViewCell.swift */; };
 		7823065E2838407C00271289 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7823065C2838407C00271289 /* TaskTableViewCell.xib */; };
 		78230660283D80A900271289 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7823065F283D80A900271289 /* TaskDetailsViewController.swift */; };
+		78230663283ED71800271289 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78230662283ED71800271289 /* NotificationScheduler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		7823065B2838407C00271289 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		7823065C2838407C00271289 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		7823065F283D80A900271289 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		78230662283ED71800271289 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		7823061E282EACE200271289 /* Tasks-CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				78230661283ED6FB00271289 /* notifications */,
 				7823064E2831C4A400271289 /* extensions */,
 				7823063B282EAEDF00271289 /* modelControllers */,
 				78230638282EAD3700271289 /* models */,
@@ -185,6 +188,14 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		78230661283ED6FB00271289 /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				78230662283ED71800271289 /* NotificationScheduler.swift */,
+			);
+			path = notifications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -270,6 +281,7 @@
 				78230643282EB50D00271289 /* TaskListModelController.swift in Sources */,
 				782306502831C4CD00271289 /* UIViewExtension.swift in Sources */,
 				782306562834831F00271289 /* ListDetailsViewController.swift in Sources */,
+				78230663283ED71800271289 /* NotificationScheduler.swift in Sources */,
 				78230620282EACE200271289 /* AppDelegate.swift in Sources */,
 				782306582835CADB00271289 /* UIColorExtension.swift in Sources */,
 				782306482831AC4700271289 /* TaskListTableViewCell.swift in Sources */,

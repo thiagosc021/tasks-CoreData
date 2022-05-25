@@ -11,6 +11,7 @@ import CoreData
 extension TaskList {
     @discardableResult convenience init(name: String, color: String?, icon: String?, context: NSManagedObjectContext = CoreDataStack.context ) {
         self.init(context: context)
+        self.id = UUID()
         self.name = name
         self.color = color
         self.icon = icon

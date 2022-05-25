@@ -84,7 +84,7 @@ private extension TaskViewController {
     
     func configureIconView(with model: TaskList,_ color: UIColor?) {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .default)
-        let icon = model.icon ?? ""
+        let icon = model.icon ?? "equal.circle.fill"
         let image = UIImage(systemName: icon, withConfiguration: symbolConfig)
         iconImageView.image = image
         iconImageView.tintColor = color
