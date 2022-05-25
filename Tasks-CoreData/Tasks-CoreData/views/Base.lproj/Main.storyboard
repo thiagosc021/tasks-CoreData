@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" id="8px-03-eHG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0NL-yD-94T">
                             <connections>
-                                <segue destination="tTA-r3-3Bs" kind="presentation" id="rcR-5k-IWR"/>
+                                <segue destination="tTA-r3-3Bs" kind="presentation" identifier="goToListDetail" id="rcR-5k-IWR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

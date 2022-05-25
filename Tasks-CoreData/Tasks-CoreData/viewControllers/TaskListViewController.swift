@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskListViewController: UIViewController {
+class TaskListViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var taskListsTableView: UITableView!
     
@@ -27,17 +27,15 @@ class TaskListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? TaskViewController,
-              let indexPath = self.taskListsTableView.indexPathForSelectedRow else {
+        switch segue.identifier {
+        case "GoToTasks":
+            prepareForTaskViewController(segue)
+        case "goToListDetail":
+            prepareForListDetailViewController(segue)
+        default:
             return
         }
-        
-        let taskList = modelController.taskLists[indexPath.row]
-        
-        destinationVC.model = taskList
-        
     }
-
 }
 
 private extension TaskListViewController {
@@ -46,10 +44,31 @@ private extension TaskListViewController {
         taskListsTableView.layer.cornerRadius = 10.0
         taskListsTableView.register(UINib(nibName: "TaksListTableViewCell", bundle: nil), forCellReuseIdentifier: "taskListCell")
     }
-}
-
-extension TaskListViewController: UITableViewDelegate {
     
+    func prepareForTaskViewController(_ segue: UIStoryboardSegue) {
+        guard let destinationVC = segue.destination as? TaskViewController,
+              let indexPath = self.taskListsTableView.indexPathForSelectedRow else {
+            return
+        }
+        
+        let taskList = modelController.taskLists[indexPath.row]
+        
+        destinationVC.model = taskList
+    }
+    
+    func prepareForListDetailViewController(_ segue: UIStoryboardSegue) {
+        guard let destinationVC = segue.destination as? ListDetailsViewController else {
+            return
+        }
+        
+        destinationVC.completion = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.modelController.fetch()
+            self.taskListsTableView.reloadData()
+        }
+    }
 }
 
 extension TaskListViewController: UITableViewDataSource {

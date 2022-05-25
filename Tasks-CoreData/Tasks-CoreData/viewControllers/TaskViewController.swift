@@ -33,7 +33,6 @@ class TaskViewController: UIViewController, UITableViewDelegate {
         }
         modelController.fetch(taskList: model)
     }
-    
    
     @IBAction func showCompletedTapped(_ sender: UIButton) {
         guard let model = model else {
@@ -48,7 +47,6 @@ class TaskViewController: UIViewController, UITableViewDelegate {
         }
         tasksTableView.reloadData()
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard  let destination = segue.destination as? TaskDetailsViewController ,
@@ -106,7 +104,6 @@ private extension TaskViewController {
 }
 
 extension TaskViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return modelController.taskStatus.count
     }
@@ -139,8 +136,6 @@ extension TaskViewController: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-    
-    
 }
 
 extension TaskViewController: TaskTableViewCellDelegate {
@@ -155,8 +150,4 @@ extension TaskViewController: TaskTableViewCellDelegate {
         self.fetchTasks()
         self.tasksTableView.reloadData()
     }
-    
-    
-    
-    
 }
