@@ -96,6 +96,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Jks-8Z-oZ0" kind="showDetail" identifier="goToEditTask" id="f5N-iB-XOn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -157,7 +160,7 @@
                     <navigationItem key="navigationItem" id="3WQ-rG-zIk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FGX-Ls-HQm">
                             <connections>
-                                <segue destination="Jks-8Z-oZ0" kind="showDetail" identifier="goToTaskDetails" id="1oR-rS-ZxM"/>
+                                <segue destination="Jks-8Z-oZ0" kind="showDetail" identifier="goToNewTask" id="1oR-rS-ZxM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -299,6 +302,7 @@
                             <constraint firstItem="tb2-00-hP0" firstAttribute="trailing" secondItem="f7C-sD-fYO" secondAttribute="trailing" constant="20" id="rh4-YI-fXS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="4DP-bW-rly"/>
                     <connections>
                         <outlet property="basicInfoContainerView" destination="eLf-Dl-BJv" id="OPP-XT-lZt"/>
                         <outlet property="datePickerContainerView" destination="bJa-hh-xzl" id="blQ-GE-QJC"/>
@@ -306,6 +310,7 @@
                         <outlet property="notesTextField" destination="Q1z-ru-lZp" id="H3H-53-tcI"/>
                         <outlet property="notificationContainerView" destination="TOD-Gb-DEu" id="AO1-k1-i9P"/>
                         <outlet property="saveButton" destination="f7C-sD-fYO" id="fib-II-S5u"/>
+                        <outlet property="screenModeLabel" destination="ncT-d6-oDf" id="X3p-Xf-h2N"/>
                         <outlet property="sendNotificationSwitchButton" destination="GEH-JF-wuf" id="EP3-Xn-6rA"/>
                         <outlet property="titleTextField" destination="zek-An-opY" id="KAM-Ri-mwv"/>
                     </connections>
@@ -445,6 +450,9 @@
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="f5N-iB-XOn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">

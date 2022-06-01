@@ -49,8 +49,8 @@ class TaskViewController: UIViewController, UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard  let destination = segue.destination as? TaskDetailsViewController ,
-                let model = model else {
+        guard  let destination = segue.destination as? TaskDetailsViewController,
+               let model = model else {
             return
         }
         
@@ -60,6 +60,12 @@ class TaskViewController: UIViewController, UITableViewDelegate {
                 return
             }
             self.tasksTableView.reloadData()
+        }
+        
+        if let selectedIndexPath = self.tasksTableView.indexPathForSelectedRow,
+            segue.identifier == "goToEditTask" {
+            let task = modelController.tasks[selectedIndexPath.section][selectedIndexPath.row]
+            destination.model = task
         }
     }
 }
@@ -135,6 +141,32 @@ extension TaskViewController: UITableViewDataSource {
         cell.model = task
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "") { [weak self] _, _, completion in
+            guard let self = self else {
+                completion(false)
+                return
+            }
+            
+            let task = self.modelController.tasks[indexPath.section][indexPath.row]
+            self.modelController.delete(task: task)
+            self.tasksTableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            completion(true)
+        }
+        
+        deleteAction.image = UIImage(systemName: "trash.circle")
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = false
+        
+        return config
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goToEditTask", sender: self)
     }
 }
 

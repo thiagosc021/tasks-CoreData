@@ -46,13 +46,14 @@ class TaskModelController {
         NotificationScheduler.shared.scheduleNotifications(for: newTask)
     }
     
-    func update(task: Task, with title: String, notes: String?, dueDate: Date, completionDate: Date?) {
+    func update(task: Task, with title: String, notes: String?, dueDate: Date, sendNotification: Bool, completionDate: Date?) {
         task.title = title
         task.notes = notes
         task.dueDate = dueDate
+        task.sendNotification = sendNotification
         task.completionDate = completionDate
         CoreDataStack.saveContext()
-        NotificationScheduler.shared.cancelNotifications(for: task)        
+        NotificationScheduler.shared.cancelNotifications(for: task)
         guard task.sendNotification else {
             return
         }
@@ -119,11 +120,19 @@ class TaskModelController {
     }
     
     func delete(task: Task) {
-        
+        if task.isCompleted() {
+            remove(from: .completed, task: task)
+        } else {
+            remove(from: .incompleted, task: task)
+        }
+        disableNotificationAlert(task)
+        CoreDataStack.context.delete(task)
+        CoreDataStack.saveContext()
     }
     
     private func disableNotificationAlert(_ task: Task) {
         task.sendNotification = false
+        NotificationScheduler.shared.cancelNotifications(for: task)
     }
     
     private func remove(from status:TaskStatus, task: Task) {
